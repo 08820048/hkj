@@ -61,7 +61,7 @@
     }
 })();
 
-// Footer 自动收起逻辑
+// 优化滚动事件处理
 (function() {
     const footer = document.querySelector('footer');
     const banner = document.querySelector('.banner-carousel');
@@ -69,17 +69,33 @@
 
     function checkFooterOverlap() {
         if (!footer || !banner) return;
+        
         const bannerRect = banner.getBoundingClientRect();
         const footerRect = footer.getBoundingClientRect();
-        // 检查 footer 是否与 banner 区域重叠
-        if (footerRect.top < bannerRect.bottom && footerRect.bottom > bannerRect.top) {
+        
+        // 检查footer是否与banner区域重叠
+        if (footerRect.top < bannerRect.bottom) {
             footer.classList.add('footer-hide');
         } else {
             footer.classList.remove('footer-hide');
         }
     }
 
-    window.addEventListener('scroll', function() {
+    // 使用节流函数优化滚动事件
+    function throttle(callback, delay) {
+        let lastCall = 0;
+        return function(...args) {
+            const now = new Date().getTime();
+            if (now - lastCall < delay) {
+                return;
+            }
+            lastCall = now;
+            return callback(...args);
+        };
+    }
+
+    // 优化滚动事件监听
+    window.addEventListener('scroll', throttle(function() {
         if (!ticking) {
             window.requestAnimationFrame(function() {
                 checkFooterOverlap();
@@ -87,10 +103,32 @@
             });
             ticking = true;
         }
-    });
-    window.addEventListener('resize', checkFooterOverlap);
+    }, 100));
+
+    // 优化resize事件监听
+    window.addEventListener('resize', throttle(checkFooterOverlap, 100));
+    
+    // 初始检查
     document.addEventListener('DOMContentLoaded', checkFooterOverlap);
 })();
+
+// 优化图片加载
+document.addEventListener('DOMContentLoaded', function() {
+    // 懒加载图片
+    const lazyImages = document.querySelectorAll('img[data-src]');
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+                observer.unobserve(img);
+            }
+        });
+    });
+
+    lazyImages.forEach(img => imageObserver.observe(img));
+});
 
 // 产品预览功能
 document.addEventListener('DOMContentLoaded', function() {
