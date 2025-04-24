@@ -91,3 +91,54 @@
     window.addEventListener('resize', checkFooterOverlap);
     document.addEventListener('DOMContentLoaded', checkFooterOverlap);
 })();
+
+// 产品预览功能
+document.addEventListener('DOMContentLoaded', function() {
+    // 创建预览弹窗
+    const previewModal = document.createElement('div');
+    previewModal.className = 'preview-modal';
+    previewModal.innerHTML = `
+        <div class="preview-content">
+            <span class="preview-close">&times;</span>
+            <img src="" alt="产品预览">
+        </div>
+    `;
+    document.body.appendChild(previewModal);
+
+    // 获取所有产品项
+    const productItems = document.querySelectorAll('.product-item');
+
+    // 为每个产品项添加点击事件
+    productItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const imgSrc = this.querySelector('img').src;
+            const previewImg = previewModal.querySelector('img');
+            previewImg.src = imgSrc;
+            previewModal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // 防止背景滚动
+        });
+    });
+
+    // 关闭预览
+    const closePreview = () => {
+        previewModal.classList.remove('active');
+        document.body.style.overflow = ''; // 恢复背景滚动
+    };
+
+    // 点击关闭按钮关闭预览
+    previewModal.querySelector('.preview-close').addEventListener('click', closePreview);
+
+    // 点击背景关闭预览
+    previewModal.addEventListener('click', function(e) {
+        if (e.target === this) {
+            closePreview();
+        }
+    });
+
+    // ESC键关闭预览
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && previewModal.classList.contains('active')) {
+            closePreview();
+        }
+    });
+});

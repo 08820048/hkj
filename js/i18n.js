@@ -10,7 +10,7 @@ const zh = {
     aboutTitle: "秉承创新与专业，持续为客户创造价值",
     aboutDesc: "公司一直秉承“提供恰当包装，为客户创造价值”的理念，时时处处为客户着想，积极走在前面。并在设计、生产工艺，经营管理等方面积累了丰富的经验。我们对在包装设计、产品质量、性能、价格、服务等各方面的优势充满自信。",
     advantages: ["20年行业经验", "全新PE材料", "定制化服务", "一体化生产"],
-    productsTitle: "核心产品展示",
+    productsTitle: "公司简介",
     partnersTitle: "合作伙伴",
     videoTitle: "企业宣传片",
     footer: "版权所有 2025 苏州华可杰包装有限公司 | 技术支持：自研<br>地址：江苏省苏州市高新区xx路xx号 &nbsp;|&nbsp; 电话：0512-xxxxxxx &nbsp;|&nbsp; 邮箱：info@huakejie.com"
