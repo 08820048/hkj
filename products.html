@@ -3,53 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>产品展示 - 华可杰包装</title>
+    <title>产品展示 - 苏州华可杰包装有限公司</title>
+    <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header>
         <div class="container header-flex">
-            <div class="logo">华可杰包装</div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">首页</a></li>
-                    <li><a href="products.html">产品展示</a></li>
-                    <li><a href="facility.html">硬件设施</a></li>
-                    <li><a href="services.html">其他服务</a></li>
-                    <li><a href="contact.html">联系我们</a></li>
-                </ul>
-            </nav>
+            <div class="logo">
+                <img src="images/logo/R_LOGO1.png" alt="公司LOGO" class="logo-img">
+                <span class="logo-text">
+                  <span class="logo-cn">苏州华可杰包装有限公司</span>
+                  <span class="logo-en-wrap">
+                    <span class="logo-en">SUZHOU HUAKEJIE PACKAGING CO., LTD.</span>
+                    <span class="logo-sub">专注PE、复合塑料包装袋<span class="logo-sub-num">20</span>年</span>
+                  </span>
+                </span>
+            </div>
+            <div class="menu-area">
+                <nav>
+                    <ul>
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="products.html" class="active">产品展示</a></li>
+                        <li><a href="facility.html">硬件设施</a></li>
+                        <li><a href="services.html">其他服务</a></li>
+                        <li><a href="contact.html">联系我们</a></li>
+                    </ul>
+                </nav>
+                <div class="lang-switch">
+                    <button id="lang-toggle" class="lang-btn" title="切换语言">中文 / EN</button>
+                </div>
+            </div>
         </div>
     </header>
-    <section class="container">
-        <h1>产品展示</h1>
-        <div class="product-list">
-            <!-- 示例产品卡片，可后续用JS动态生成 -->
-            <div class="product-card">
-                <img src="images/product1.jpg" alt="PE自封袋">
-                <h3>PE自封袋</h3>
-                <p>高品质自封袋，支持多规格定制。</p>
-                <a href="#" class="btn">查看详情</a>
+    
+    <main>
+        <section class="products-page">
+            <div class="container">
+                <h1>产品展示</h1>
+                <!-- 产品内容将由JavaScript动态生成 -->
             </div>
-            <div class="product-card">
-                <img src="images/product2.jpg" alt="PE平口袋">
-                <h3>PE平口袋</h3>
-                <p>耐用环保，适用于多种包装需求。</p>
-                <a href="#" class="btn">查看详情</a>
-            </div>
-            <div class="product-card">
-                <img src="images/product3.jpg" alt="PE拉链袋">
-                <h3>PE拉链袋</h3>
-                <p>密封性好，便于反复开启。</p>
-                <a href="#" class="btn">查看详情</a>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
+    
     <footer>
         <div class="container">
-            <p>版权所有 © 2025 苏州华可杰包装有限公司</p>
+            <p>版权所有 2025 苏州华可杰包装有限公司 | 技术支持：自研<br>
+            地址：江苏省苏州市高新区xx路xx号 &nbsp;|&nbsp; 电话：0512-xxxxxxx &nbsp;|&nbsp; 邮箱：info@huakejie.com</p>
         </div>
     </footer>
+    
+    <script src="js/products-data.js"></script>
+    <script src="js/products.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/i18n.js"></script>
 </body>
 </html>
