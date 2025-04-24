@@ -313,6 +313,128 @@ nav a:hover {
     text-align: center;
 }
 
+.about-desc {
+    font-size: 1.13em;
+    color: #444;
+    margin: 1.2em 0 2.1em 0;
+    text-align: center;
+    line-height: 1.8;
+    letter-spacing: 0.1em;
+}
+
+.about-desc-wide {
+    max-width: 900px;
+    margin: 1.7em auto 0 auto;
+    font-size: 1.13em;
+    color: #444;
+    text-align: center;
+    line-height: 1.8;
+    letter-spacing: 0.1em;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    border: none;
+}
+
+.about-features-line {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0;
+    margin: 2.2em auto 2.1em auto;
+    max-width: 900px;
+    min-width: 300px;
+}
+
+.about-feature-node {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.about-feature-icon {
+    font-size: 2.2em;
+    color: #1976d2;
+    background: #fff;
+    border-radius: 50%;
+    padding: 0.22em 0.28em;
+    margin-bottom: 0.2em;
+    border: 2.5px solid #1976d2;
+    box-shadow: 0 2px 8px rgba(25,118,210,0.09);
+}
+
+.about-feature-title {
+    font-size: 1.08em;
+    color: #333;
+    font-weight: 600;
+    margin-top: 0.25em;
+    letter-spacing: 0.08em;
+    text-align: center;
+}
+
+.about-feature-line {
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    top: 2.1em;
+    height: 0;
+    border-bottom: 3px solid #1976d2;
+    z-index: 1;
+}
+
+.about-stats {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 32px;
+    margin: 2.3em 0 1.5em 0;
+}
+
+.about-stat-item {
+    flex: 1 1 0;
+    min-width: 180px;
+    max-width: 240px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 14px rgba(25,118,210,0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2.2em 0 2em 0;
+    transition: box-shadow 0.2s, transform 0.2s;
+    border: 1.5px solid #f1f5fa;
+}
+
+.about-stat-item:hover {
+    box-shadow: 0 6px 28px rgba(25,118,210,0.13);
+    transform: translateY(-6px) scale(1.035);
+    border-color: #1976d2;
+}
+
+.about-stat-num {
+    font-size: 2.5em;
+    font-weight: 800;
+    color: #1976d2;
+    margin-bottom: 0.3em;
+    letter-spacing: 1px;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+}
+
+.about-stat-desc {
+    font-size: 1.09em;
+    color: #333;
+    margin-top: 0.2em;
+    text-align: center;
+    letter-spacing: 0.2px;
+    font-family: 'Segoe UI', 'PingFang SC', Arial, sans-serif;
+}
+
 .advantages {
     display: flex;
     justify-content: center;
@@ -556,6 +678,76 @@ footer a, footer span, footer p {
     border-radius: 12px;
 }
 
+.about-features {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    margin: 2.3em auto 2em auto;
+    max-width: 900px;
+    width: 100%;
+}
+
+@media (max-width: 900px) {
+    .about-features {
+        flex-direction: column;
+        gap: 16px;
+        max-width: 98vw;
+        align-items: center;
+    }
+}
+
+.about-feature-item {
+    flex: 1 1 0;
+    min-width: 150px;
+    max-width: 220px;
+    background: #fff;
+    border-radius: 0;
+    box-shadow: 0 2px 14px rgba(25,118,210,0.10);
+    border: 2px solid #e3ebf7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2.2em 1.1em 2em 1.1em;
+    transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+    position: relative;
+}
+
+.about-feature-item:hover {
+    box-shadow: 0 8px 28px rgba(25,118,210,0.17);
+    border-color: #1976d2;
+    transform: translateY(-8px) scale(1.04);
+}
+
+.about-feature-icon {
+    font-size: 2.4em;
+    color: #1976d2;
+    margin-bottom: 0;
+    background: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    border: none;
+}
+
+.about-feature-title {
+    display: block;
+    font-size: 1.08em;
+    color: #333;
+    font-weight: 600;
+    margin-top: 0.38em;
+    letter-spacing: 0.08em;
+    text-align: center;
+    transition: color 0.25s, transform 0.35s cubic-bezier(.19,1,.22,1), text-shadow 0.3s;
+}
+
+.about-feature-item:hover .about-feature-title {
+    color: #1976d2;
+    transform: scale(1.12) translateY(-4px) rotate(-2deg);
+    text-shadow: 0 4px 16px rgba(25,118,210,0.15), 0 1px 0 #fff;
+}
+
 @media (max-width: 900px) {
     .header-flex {
         flex-direction: column;
@@ -611,5 +803,86 @@ footer a, footer span, footer p {
         height: 100px;
         right: 12px;
         bottom: 12px;
+    }
+    .about-stats {
+        flex-direction: column;
+        gap: 18px;
+        margin: 1.2em 0 1.2em 0;
+    }
+    .about-stat-item {
+        min-width: 0;
+        max-width: none;
+        padding: 1.4em 0 1.2em 0;
+    }
+    .about-stat-num {
+        font-size: 1.6em;
+    }
+    .about-stat-desc {
+        font-size: 0.98em;
+    }
+    .about-features {
+        flex-direction: column;
+        gap: 16px;
+        max-width: 98vw;
+    }
+    .about-feature-item {
+        min-width: 0;
+        max-width: none;
+        padding: 0.9em 0.7em 0.6em 0.7em;
+        margin-bottom: 1.2em;
+    }
+    .about-feature-icon {
+        font-size: 1.5em;
+    }
+    .about-feature-title {
+        font-size: 0.97em;
+    }
+    .about-desc-wide {
+        max-width: 98vw;
+        padding: 0;
+        font-size: 1em;
+    }
+    .about-features {
+        flex-direction: column;
+        gap: 16px;
+        max-width: 98vw;
+    }
+    .about-feature-item {
+        min-width: 0;
+        padding: 0.9em 0.7em 0.6em 0.7em;
+        margin-bottom: 1.2em;
+    }
+    .about-feature-icon {
+        font-size: 1.5em;
+    }
+    .about-feature-title {
+        font-size: 0.97em;
+    }
+    .about-features-curve-wrap {
+        max-width: 98vw;
+        min-height: 0;
+        margin: 1.1em auto 1.1em auto;
+    }
+    .about-features-curve {
+        flex-direction: column;
+        align-items: center;
+        position: static;
+        width: 100%;
+        top: 0;
+    }
+    .about-feature-card {
+        min-width: 0;
+        max-width: none;
+        padding: 0.9em 0.7em 0.6em 0.7em;
+        margin-bottom: 1.2em;
+    }
+    .about-feature-icon {
+        font-size: 1.5em;
+    }
+    .about-feature-title {
+        font-size: 0.97em;
+    }
+    .about-features-curve svg {
+        display: none;
     }
 }
