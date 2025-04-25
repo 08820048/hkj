@@ -113,36 +113,93 @@ const en = {
 };
 function setLang(lang) {
     const dict = lang === 'en' ? en : zh;
-    // 顶部导航
+    
+    // 更新当前语言
+    currentLang = lang;
+    
+    // 更新导航链接
     const navLinks = document.querySelectorAll('nav ul li a');
     if(navLinks[0]) navLinks[0].textContent = dict.home;
     if(navLinks[1]) navLinks[1].textContent = dict.products;
     if(navLinks[2]) navLinks[2].textContent = dict.facility;
     if(navLinks[3]) navLinks[3].textContent = dict.services;
     if(navLinks[4]) navLinks[4].textContent = dict.contact;
-    // slogan（已无 banner-text，可注释掉）
-    // if(document.querySelector('.banner-text h1')) document.querySelector('.banner-text h1').textContent = dict.slogan;
-    // if(document.querySelector('.banner-text p')) document.querySelector('.banner-text p').textContent = dict.subSlogan;
-    // about
-    if(document.querySelector('.about h2')) document.querySelector('.about h2').textContent = dict.aboutTitle;
-    if(document.querySelector('.about p')) document.querySelector('.about p').textContent = dict.aboutDesc;
-    const advs = document.querySelectorAll('.advantages li');
-    advs.forEach((li, i) => { if(dict.advantages[i]) li.textContent = dict.advantages[i]; });
-    // products
-    if(document.querySelector('.products-preview h2')) document.querySelector('.products-preview h2').textContent = dict.productsTitle;
-    // partners
-    if(document.querySelector('.partners h2')) document.querySelector('.partners h2').textContent = dict.partnersTitle;
-    // video
-    if(document.querySelector('.video h2')) document.querySelector('.video h2').textContent = dict.videoTitle;
-    // footer
-    if(document.querySelector('footer .container p')) document.querySelector('footer .container p').innerHTML = dict.footer;
-    // 按钮内容
+    
+    // 更新页面标题（如果存在）
+    const pageTitle = document.querySelector('.facility-page h1');
+    if(pageTitle) {
+        const config = window.facilityDisplayConfig;
+        if(config && config.title) {
+            pageTitle.textContent = config.title[currentLang];
+        }
+    }
+    
+    // 更新设备介绍（如果存在）
+    const facilityIntro = document.querySelector('.facility-intro p');
+    if(facilityIntro) {
+        const config = window.facilityDisplayConfig;
+        if(config && config.intro) {
+            facilityIntro.textContent = config.intro[currentLang];
+        }
+    }
+    
+    // 更新设备卡片
+    const facilityCards = document.querySelectorAll('.facility-card');
+    facilityCards.forEach(card => {
+        const facilityId = card.dataset.id;
+        if(facilityId) {
+            const facility = window.facilityData[facilityId];
+            if(facility) {
+                // 更新设备名称
+                const nameElement = card.querySelector('h3');
+                if(nameElement) {
+                    nameElement.textContent = facility.name[currentLang];
+                }
+                
+                // 更新设备介绍
+                const introTitle = card.querySelector('.facility-info h4:first-child');
+                const introText = card.querySelector('.facility-info p');
+                if(introTitle) introTitle.textContent = currentLang === 'zh' ? '适用产品' : 'Applications';
+                if(introText) introText.textContent = facility.intro[currentLang];
+                
+                // 更新设备特点
+                const featuresTitle = card.querySelector('.facility-info h4:last-of-type');
+                if(featuresTitle) featuresTitle.textContent = currentLang === 'zh' ? '设备特点' : 'Features';
+                
+                const featuresList = card.querySelectorAll('.facility-info ul li');
+                facility.features[currentLang].forEach((feature, index) => {
+                    if(featuresList[index]) featuresList[index].textContent = feature;
+                });
+                
+                // 更新详情按钮
+                const detailButton = card.querySelector('.btn-detail');
+                if(detailButton) {
+                    detailButton.textContent = currentLang === 'zh' ? '查看详情' : 'View Details';
+                }
+            }
+        }
+    });
+    
+    // 更新页脚
+    const footer = document.querySelector('footer .container p');
+    if(footer) footer.innerHTML = dict.footer;
+    
+    // 更新语言切换按钮文本
     const langBtn = document.getElementById('lang-toggle');
     if(langBtn) langBtn.textContent = lang === 'zh' ? '中文 / EN' : 'EN / 中文';
-    currentLang = lang;
 }
-document.getElementById('lang-toggle').onclick = () => {
-    setLang(currentLang === 'zh' ? 'en' : 'zh');
-};
-// 默认中文
-setLang('zh');
+
+// 在DOM加载完成后初始化
+document.addEventListener('DOMContentLoaded', function() {
+    // 获取语言切换按钮
+    const langBtn = document.getElementById('lang-toggle');
+    if(langBtn) {
+        // 设置点击事件
+        langBtn.onclick = () => {
+            setLang(currentLang === 'zh' ? 'en' : 'zh');
+        };
+        
+        // 初始化语言设置
+        setLang('zh');
+    }
+});
