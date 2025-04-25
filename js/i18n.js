@@ -1,3 +1,5 @@
+let currentLang = 'zh';
+
 // 单按钮中英文切换脚本
 const zh = {
     home: "首页",
@@ -8,12 +10,51 @@ const zh = {
     slogan: "专业包装解决方案",
     subSlogan: "20年行业经验，专注PE材料定制服务",
     aboutTitle: "秉承创新与专业，持续为客户创造价值",
-    aboutDesc: "公司一直秉承“提供恰当包装，为客户创造价值”的理念，时时处处为客户着想，积极走在前面。并在设计、生产工艺，经营管理等方面积累了丰富的经验。我们对在包装设计、产品质量、性能、价格、服务等各方面的优势充满自信。",
+    aboutDesc: "公司一直秉承"提供恰当包装，为客户创造价值"的理念，时时处处为客户着想，积极走在前面。并在设计、生产工艺，经营管理等方面积累了丰富的经验。我们对在包装设计、产品质量、性能、价格、服务等各方面的优势充满自信。",
     advantages: ["20年行业经验", "全新PE材料", "定制化服务", "一体化生产"],
     productsTitle: "公司简介",
     partnersTitle: "合作伙伴",
     videoTitle: "企业宣传片",
-    footer: "版权所有 2025 苏州华可杰包装有限公司 | 技术支持：自研<br>地址：江苏省苏州市高新区xx路xx号 &nbsp;|&nbsp; 电话：0512-xxxxxxx &nbsp;|&nbsp; 邮箱：info@huakejie.com"
+    footer: "版权所有 2025 苏州华可杰包装有限公司 | 技术支持：自研<br>地址：江苏省苏州市高新区xx路xx号 &nbsp;|&nbsp; 电话：0512-xxxxxxx &nbsp;|&nbsp; 邮箱：info@huakejie.com",
+    facilityTitle: "硬件设施",
+    facilityIntro: "设备介绍",
+    facilityFeatures: "设备特点",
+    facilityDetails: "详细信息",
+    serviceTitle: "其他服务",
+    serviceList: {
+        custom: "定制化包装解决方案",
+        customDesc: "根据客户需求量身定制各类包装袋，满足不同行业应用。",
+        support: "售后支持",
+        supportDesc: "专业团队提供技术咨询与售后服务，保障客户无忧。",
+        consult: "行业咨询",
+        consultDesc: "分享行业最新动态与包装解决方案，助力客户发展。",
+        process: "服务流程",
+        processSteps: ["需求沟通", "方案设计", "样品确认", "批量生产", "交付与售后"]
+    },
+    contactTitle: "联系我们",
+    contactSubtitle: "随时为您提供专业服务",
+    contactInfo: {
+        phone: "电话咨询",
+        email: "电子邮箱",
+        address: "公司地址",
+        wechat: "微信咨询",
+        wechatDesc: "扫码添加微信"
+    },
+    contactForm: {
+        title: "在线留言",
+        name: "您的姓名",
+        email: "您的邮箱",
+        phone: "联系电话",
+        message: "请输入您的留言内容...",
+        submit: "提交留言"
+    },
+    faqTitle: "常见问题",
+    faqList: {
+        custom: "可以定制包装袋吗？",
+        customAns: "支持多规格定制，欢迎来电咨询！",
+        delivery: "交货周期多久？",
+        deliveryAns: "一般为5-10个工作日，具体视订单量而定。"
+    }
 };
 const en = {
     home: "Home",
@@ -29,9 +70,47 @@ const en = {
     productsTitle: "Featured Products",
     partnersTitle: "Partners",
     videoTitle: "Promo Video",
-    footer: " 2025 Suzhou Huakejie Packaging Co., Ltd. | Powered by In-house<br>Address: xx Road, High-tech Zone, Suzhou, Jiangsu &nbsp;|&nbsp; Tel: 0512-xxxxxxx &nbsp;|&nbsp; Email: info@huakejie.com"
+    footer: " 2025 Suzhou Huakejie Packaging Co., Ltd. | Powered by In-house<br>Address: xx Road, High-tech Zone, Suzhou, Jiangsu &nbsp;|&nbsp; Tel: 0512-xxxxxxx &nbsp;|&nbsp; Email: info@huakejie.com",
+    facilityTitle: "Facility",
+    facilityIntro: "Introduction",
+    facilityFeatures: "Features",
+    facilityDetails: "Details",
+    serviceTitle: "Services",
+    serviceList: {
+        custom: "Customized Packaging Solutions",
+        customDesc: "Tailored packaging bags for different industry applications.",
+        support: "After-sales Support",
+        supportDesc: "Professional technical consultation and after-sales service.",
+        consult: "Industry Consultation",
+        consultDesc: "Latest industry trends and packaging solutions.",
+        process: "Service Process",
+        processSteps: ["Requirement Communication", "Solution Design", "Sample Confirmation", "Mass Production", "Delivery & After-sales"]
+    },
+    contactTitle: "Contact Us",
+    contactSubtitle: "Professional Service Available 24/7",
+    contactInfo: {
+        phone: "Phone Consultation",
+        email: "Email",
+        address: "Company Address",
+        wechat: "WeChat Consultation",
+        wechatDesc: "Scan QR Code to Add"
+    },
+    contactForm: {
+        title: "Online Message",
+        name: "Your Name",
+        email: "Your Email",
+        phone: "Contact Phone",
+        message: "Please enter your message...",
+        submit: "Submit"
+    },
+    faqTitle: "FAQ",
+    faqList: {
+        custom: "Can I customize packaging bags?",
+        customAns: "Yes, we support various specifications. Please contact us for details.",
+        delivery: "What's the delivery time?",
+        deliveryAns: "Usually 5-10 working days, depending on order quantity."
+    }
 };
-let currentLang = 'zh';
 function setLang(lang) {
     const dict = lang === 'en' ? en : zh;
     // 顶部导航

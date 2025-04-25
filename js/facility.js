@@ -50,13 +50,13 @@ function showImagePreview(facilityId) {
     // 创建图片
     const image = document.createElement('img');
     image.src = facility.image;
-    image.alt = facility.name;
+    image.alt = facility.name[currentLang];
     imageContainer.appendChild(image);
     
     // 创建图片标题
     const imageTitle = document.createElement('div');
     imageTitle.className = 'image-preview-title';
-    imageTitle.textContent = facility.name;
+    imageTitle.textContent = facility.name[currentLang];
     
     // 组装预览内容
     modalContent.appendChild(imageContainer);
@@ -110,7 +110,7 @@ function showFacilityDetail(facilityId) {
     modalHeader.className = 'facility-modal-header';
     
     const modalTitle = document.createElement('h2');
-    modalTitle.textContent = facility.name;
+    modalTitle.textContent = facility.name[currentLang];
     modalHeader.appendChild(modalTitle);
     
     const closeButton = document.createElement('button');
@@ -127,7 +127,7 @@ function showFacilityDetail(facilityId) {
     modalImage.className = 'facility-modal-image';
     const image = document.createElement('img');
     image.src = facility.image;
-    image.alt = facility.name;
+    image.alt = facility.name[currentLang];
     image.addEventListener('click', function() {
         showImagePreview(facilityId);
     });
@@ -138,10 +138,10 @@ function showFacilityDetail(facilityId) {
     const introSection = document.createElement('div');
     introSection.className = 'facility-modal-section';
     const introTitle = document.createElement('h3');
-    introTitle.textContent = '设备介绍';
+    introTitle.textContent = currentLang === 'zh' ? '设备介绍' : 'Introduction';
     introSection.appendChild(introTitle);
     const introText = document.createElement('p');
-    introText.textContent = facility.intro;
+    introText.textContent = facility.intro[currentLang];
     introSection.appendChild(introText);
     modalBody.appendChild(introSection);
     
@@ -149,10 +149,10 @@ function showFacilityDetail(facilityId) {
     const featuresSection = document.createElement('div');
     featuresSection.className = 'facility-modal-section';
     const featuresTitle = document.createElement('h3');
-    featuresTitle.textContent = '设备特点';
+    featuresTitle.textContent = currentLang === 'zh' ? '设备特点' : 'Features';
     featuresSection.appendChild(featuresTitle);
     const featuresList = document.createElement('ul');
-    facility.features.forEach(feature => {
+    facility.features[currentLang].forEach(feature => {
         const li = document.createElement('li');
         li.textContent = feature;
         featuresList.appendChild(li);
@@ -168,7 +168,7 @@ function showFacilityDetail(facilityId) {
         sectionTitle.textContent = title;
         section.appendChild(sectionTitle);
         const list = document.createElement('ul');
-        items.forEach(item => {
+        items[currentLang].forEach(item => {
             const li = document.createElement('li');
             li.textContent = item;
             list.appendChild(li);
