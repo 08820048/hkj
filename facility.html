@@ -6,8 +6,18 @@
     <title>硬件设施 - 苏州华可杰包装有限公司</title>
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/style.css">
+    <script>
+        // 在页面渲染前检查语言设置
+        (function() {
+            const savedLang = localStorage.getItem('language');
+            if (savedLang === 'en') {
+                document.documentElement.lang = 'en';
+                document.title = 'Facility - Suzhou Huakejie Packaging Co., Ltd.';
+            }
+        })();
+    </script>
 </head>
-<body>
+<body style="visibility: hidden">
     <header>
         <div class="container header-flex">
             <div class="logo">
@@ -52,6 +62,12 @@
         </div>
     </footer>
     
+    <script>
+        // 在所有资源加载完成后显示页面
+        window.addEventListener('load', function() {
+            document.body.style.visibility = 'visible';
+        });
+    </script>
     <script src="js/i18n.js"></script>
     <script src="js/facility-data.js"></script>
     <script src="js/facility-display.js"></script>

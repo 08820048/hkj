@@ -1,4 +1,5 @@
-let currentLang = 'zh';
+// 从localStorage获取当前语言设置，如果没有则默认为中文
+let currentLang = localStorage.getItem('language') || 'zh';
 
 // 单按钮中英文切换脚本
 const zh = {
@@ -10,7 +11,7 @@ const zh = {
     slogan: "专业包装解决方案",
     subSlogan: "20年行业经验，专注PE材料定制服务",
     aboutTitle: "秉承创新与专业，持续为客户创造价值",
-    aboutDesc: "公司一直秉承"提供恰当包装，为客户创造价值"的理念，时时处处为客户着想，积极走在前面。并在设计、生产工艺，经营管理等方面积累了丰富的经验。我们对在包装设计、产品质量、性能、价格、服务等各方面的优势充满自信。",
+    aboutDesc: "公司一直秉承'提供恰当包装，为客户创造价值'的理念，时时处处为客户着想，积极走在前面。并在设计、生产工艺，经营管理等方面积累了丰富的经验。我们对在包装设计、产品质量、性能、价格、服务等各方面的优势充满自信。",
     advantages: ["20年行业经验", "全新PE材料", "定制化服务", "一体化生产"],
     productsTitle: "公司简介",
     partnersTitle: "合作伙伴",
@@ -56,6 +57,7 @@ const zh = {
         deliveryAns: "一般为5-10个工作日，具体视订单量而定。"
     }
 };
+
 const en = {
     home: "Home",
     products: "Products",
@@ -111,11 +113,13 @@ const en = {
         deliveryAns: "Usually 5-10 working days, depending on order quantity."
     }
 };
+
 function setLang(lang) {
     const dict = lang === 'en' ? en : zh;
     
-    // 更新当前语言
+    // 更新当前语言并保存到localStorage
     currentLang = lang;
+    localStorage.setItem('language', lang);
     
     // 更新导航链接
     const navLinks = document.querySelectorAll('nav ul li a');
@@ -124,6 +128,41 @@ function setLang(lang) {
     if(navLinks[2]) navLinks[2].textContent = dict.facility;
     if(navLinks[3]) navLinks[3].textContent = dict.services;
     if(navLinks[4]) navLinks[4].textContent = dict.contact;
+
+    // 更新服务页面内容（如果在服务页面）
+    const servicesPage = document.querySelector('.services-page');
+    if (servicesPage) {
+        // 更新页面标题
+        const pageTitle = servicesPage.querySelector('h1');
+        if (pageTitle) {
+            pageTitle.textContent = dict.serviceTitle;
+        }
+
+        // 更新服务卡片内容
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach((card, index) => {
+            const title = card.querySelector('h3');
+            const content = card.querySelector('p');
+            const list = card.querySelector('ol');
+
+            if (index === 0) {
+                if (title) title.textContent = dict.serviceList.custom;
+                if (content) content.textContent = dict.serviceList.customDesc;
+            } else if (index === 1) {
+                if (title) title.textContent = dict.serviceList.support;
+                if (content) content.textContent = dict.serviceList.supportDesc;
+            } else if (index === 2) {
+                if (title) title.textContent = dict.serviceList.consult;
+                if (content) content.textContent = dict.serviceList.consultDesc;
+            } else if (index === 3 && list) {
+                if (title) title.textContent = dict.serviceList.process;
+                const steps = list.querySelectorAll('li');
+                dict.serviceList.processSteps.forEach((step, i) => {
+                    if (steps[i]) steps[i].textContent = step;
+                });
+            }
+        });
+    }
     
     // 更新页面标题（如果存在）
     const pageTitle = document.querySelector('.facility-page h1');
@@ -196,10 +235,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if(langBtn) {
         // 设置点击事件
         langBtn.onclick = () => {
-            setLang(currentLang === 'zh' ? 'en' : 'zh');
+            const newLang = currentLang === 'zh' ? 'en' : 'zh';
+            setLang(newLang);
         };
         
-        // 初始化语言设置
-        setLang('zh');
+        // 根据保存的语言设置初始化页面
+        setLang(currentLang);
     }
 });
