@@ -1,159 +1,105 @@
-// 产品展示页面脚本
-document.addEventListener('DOMContentLoaded', function() {
-    // 获取产品展示容器
-    const productsContainer = document.querySelector('.products-page .container');
-    
-    // 清空容器内容，只保留标题
-    const pageTitle = productsContainer.querySelector('h1');
-    productsContainer.innerHTML = '';
-    productsContainer.appendChild(pageTitle);
-    
-    // 遍历产品数据，动态生成产品分类和产品卡片
-    for (const categoryKey in productsData) {
-        const category = productsData[categoryKey];
-        
-        // 创建分类容器
-        const categoryElement = document.createElement('div');
-        categoryElement.className = 'product-category';
-        
-        // 创建分类标题
-        const categoryTitle = document.createElement('h2');
-        categoryTitle.textContent = category.title;
-        categoryElement.appendChild(categoryTitle);
-        
-        // 创建产品列表容器
-        const productList = document.createElement('div');
-        productList.className = 'product-list';
-        
-        // 遍历该分类下的所有产品
-        category.items.forEach(product => {
-            // 创建产品卡片
-            const productCard = document.createElement('div');
-            productCard.className = 'product-card';
-            productCard.dataset.id = product.id;
-            
-            // 创建产品图片
-            const productImage = document.createElement('img');
-            productImage.src = product.image;
-            productImage.alt = product.name;
-            productCard.appendChild(productImage);
-            
-            // 创建产品标题
-            const productTitle = document.createElement('h3');
-            productTitle.textContent = product.name;
-            productCard.appendChild(productTitle);
-            
-            // 创建产品描述
-            const productDescription = document.createElement('p');
-            productDescription.textContent = product.description;
-            productCard.appendChild(productDescription);
-            
-            // 创建查看详情按钮
-            const detailButton = document.createElement('a');
-            detailButton.href = '#';
-            detailButton.className = 'btn';
-            detailButton.textContent = '查看详情';
-            productCard.appendChild(detailButton);
-            
-            // 将产品卡片添加到产品列表
-            productList.appendChild(productCard);
-        });
-        
-        // 将产品列表添加到分类容器
-        categoryElement.appendChild(productList);
-        
-        // 将分类容器添加到页面容器
-        productsContainer.appendChild(categoryElement);
-    }
-    
-    // 添加产品卡片点击事件
-    const productCards = document.querySelectorAll('.product-card');
-    productCards.forEach(card => {
-        card.addEventListener('click', function(e) {
-            // 如果点击的是按钮，不阻止默认行为
-            if (e.target.classList.contains('btn')) {
-                return;
-            }
-            
-            // 否则阻止默认行为，并显示产品详情
-            e.preventDefault();
-            const productId = this.dataset.id;
-            showProductDetail(productId);
-        });
-    });
-});
+// 产品中心页面脚本：左侧分类菜单 + 右侧内容区（无面包屑导航）
 
-// 显示产品详情
-function showProductDetail(productId) {
-    // 查找产品数据
-    let product = null;
-    for (const categoryKey in productsData) {
-        const category = productsData[categoryKey];
-        const foundProduct = category.items.find(item => item.id === productId);
-        if (foundProduct) {
-            product = foundProduct;
-            break;
-        }
+document.addEventListener('DOMContentLoaded', function() {
+    // 分类菜单生成
+    const sidebarList = document.getElementById('products-sidebar-list');
+    // const breadcrumb = document.getElementById('products-breadcrumb'); // 已移除
+    const mainContent = document.getElementById('products-main-content');
+    let currentCategoryKey = Object.keys(productsData)[0];
+
+    function renderSidebar(selectedKey) {
+        sidebarList.innerHTML = '';
+        Object.entries(productsData).forEach(([key, cat]) => {
+            const li = document.createElement('li');
+            li.className = 'products-sidebar-item';
+            const link = document.createElement('a');
+            link.href = '#';
+            link.textContent = cat.title;
+            link.className = 'products-sidebar-link' + (key === selectedKey ? ' active' : '');
+            link.dataset.key = key;
+            link.onclick = function(e) {
+                e.preventDefault();
+                if (currentCategoryKey !== key) {
+                    currentCategoryKey = key;
+                    renderSidebar(currentCategoryKey);
+                    renderMain(currentCategoryKey);
+                }
+            };
+            li.appendChild(link);
+            sidebarList.appendChild(li);
+        });
     }
-    
-    if (!product) return;
-    
-    // 创建产品详情弹窗
-    const modal = document.createElement('div');
-    modal.className = 'product-detail-modal';
-    
-    // 创建弹窗内容
-    const modalContent = document.createElement('div');
-    modalContent.className = 'product-detail-content';
-    
-    // 创建关闭按钮
-    const closeButton = document.createElement('span');
-    closeButton.className = 'product-detail-close';
-    closeButton.innerHTML = '&times;';
-    modalContent.appendChild(closeButton);
-    
-    // 创建产品图片
-    const productImage = document.createElement('img');
-    productImage.src = product.image;
-    productImage.alt = product.name;
-    modalContent.appendChild(productImage);
-    
-    // 创建产品标题
-    const productTitle = document.createElement('h2');
-    productTitle.textContent = product.name;
-    modalContent.appendChild(productTitle);
-    
-    // 创建产品描述
-    const productDescription = document.createElement('p');
-    productDescription.textContent = product.description;
-    modalContent.appendChild(productDescription);
-    
-    // 将弹窗内容添加到弹窗
-    modal.appendChild(modalContent);
-    
-    // 将弹窗添加到页面
-    document.body.appendChild(modal);
-    
-    // 显示弹窗
-    setTimeout(() => {
-        modal.classList.add('active');
-    }, 10);
-    
-    // 添加关闭事件
-    closeButton.addEventListener('click', function() {
-        modal.classList.remove('active');
-        setTimeout(() => {
-            document.body.removeChild(modal);
-        }, 300);
-    });
-    
-    // 点击弹窗外部关闭
-    modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            modal.classList.remove('active');
-            setTimeout(() => {
-                document.body.removeChild(modal);
-            }, 300);
+
+    // 移除 renderBreadcrumb
+
+    function renderMain(categoryKey) {
+        const cat = productsData[categoryKey];
+        // 不再渲染面包屑
+        mainContent.innerHTML = '';
+        // 分类标题
+        const h2 = document.createElement('h2');
+        h2.className = 'products-category-title';
+        h2.textContent = cat.title;
+        mainContent.appendChild(h2);
+        // 分类简介
+        if (cat.description) {
+            const desc = document.createElement('div');
+            desc.className = 'products-category-desc';
+            desc.textContent = cat.description;
+            mainContent.appendChild(desc);
         }
-    });
-} 
+        // 产品网格
+        const grid = document.createElement('div');
+        grid.className = 'products-grid';
+        (cat.items || []).forEach(product => {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.tabIndex = 0;
+            // 图片
+            const img = document.createElement('img');
+            img.src = product.image;
+            img.alt = product.name;
+            img.onclick = function(e) {
+                e.stopPropagation();
+                showProductModal(product);
+            };
+            card.appendChild(img);
+            // 名称
+            const h3 = document.createElement('h3');
+            h3.textContent = product.name;
+            card.appendChild(h3);
+            // 详情文本
+            const descDiv = document.createElement('div');
+            descDiv.className = 'product-desc';
+            descDiv.textContent = product.description || '';
+            card.appendChild(descDiv);
+            grid.appendChild(card);
+        });
+        mainContent.appendChild(grid);
+    }
+
+    // 产品图片弹窗
+    let modal = document.querySelector('.product-modal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.className = 'product-modal';
+        modal.innerHTML = `<div class="product-modal-content">
+            <button class="product-modal-close" title="关闭">×</button>
+            <img src="" alt="" />
+        </div>`;
+        document.body.appendChild(modal);
+    }
+    function showProductModal(product) {
+        const content = modal.querySelector('.product-modal-content');
+        content.querySelector('img').src = product.image;
+        content.querySelector('img').alt = product.name;
+        modal.classList.add('active');
+    }
+    modal.querySelector('.product-modal-close').onclick = () => modal.classList.remove('active');
+    modal.onclick = e => { if (e.target === modal) modal.classList.remove('active'); };
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') modal.classList.remove('active'); });
+
+    // 初始化
+    renderSidebar(currentCategoryKey);
+    renderMain(currentCategoryKey);
+});

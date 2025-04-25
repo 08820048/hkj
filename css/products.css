@@ -1,0 +1,188 @@
+/* 产品展示页面专用样式，美观、响应式、可维护 */
+
+.products-nav {
+  position: sticky;
+  top: 65px;
+  z-index: 10;
+  background: #fff;
+  border-bottom: 1px solid #ececec;
+  padding: 0.5em 0 0.5em 0;
+  margin-bottom: 2em;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  display: flex;
+  gap: 1.2em;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.products-nav::-webkit-scrollbar { display: none; }
+.products-nav-link {
+  color: #1976d2;
+  font-weight: 600;
+  font-size: 1.1em;
+  padding: 0.3em 1.2em;
+  border-radius: 20px;
+  background: none;
+  transition: background 0.18s, color 0.18s;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.products-nav-link.active,
+.products-nav-link:hover {
+  background: #e3f2fd;
+  color: #145ea8;
+}
+
+.products-section {
+  margin-bottom: 3.5em;
+  padding-bottom: 2em;
+  border-bottom: 1px solid #f0f0f0;
+}
+.product-category-title {
+  font-size: 2em;
+  font-weight: 700;
+  margin: 1.2em 0 0.4em 0;
+  color: #1976d2;
+  letter-spacing: 1px;
+}
+.product-category-desc {
+  font-size: 1.11em;
+  color: #555;
+  margin-bottom: 1.2em;
+  line-height: 1.7;
+}
+.products-grid {
+  display: grid;
+  gap: 2.2em 2.2em;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  margin-bottom: 0.5em;
+}
+.product-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 18px 0 rgba(40,60,120,0.07);
+  padding: 1.2em 1em 1.5em 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.18s, transform 0.18s;
+  cursor: pointer;
+  position: relative;
+  min-height: 360px;
+}
+.product-card:hover {
+  box-shadow: 0 8px 32px 0 rgba(40,60,120,0.15);
+  transform: translateY(-6px) scale(1.025);
+}
+.product-card img {
+  max-width: 90%;
+  max-height: 170px;
+  border-radius: 10px;
+  margin-bottom: 1em;
+  object-fit: contain;
+  background: #f5f7fa;
+  box-shadow: 0 1px 6px rgba(60,80,140,0.06);
+}
+.product-card h3 {
+  font-size: 1.18em;
+  font-weight: 600;
+  color: #1976d2;
+  margin: 0.5em 0 0.3em 0;
+  text-align: center;
+}
+.product-card p {
+  font-size: 0.98em;
+  color: #444;
+  margin: 0 0 0.7em 0;
+  text-align: center;
+  flex: 1 1 auto;
+}
+.product-card .btn {
+  background: var(--button-bg, #ff9800);
+  color: #fff;
+  border: none;
+  border-radius: 16px;
+  padding: 0.5em 1.4em;
+  font-size: 1em;
+  font-weight: 500;
+  margin-top: auto;
+  cursor: pointer;
+  transition: background 0.18s;
+  text-decoration: none;
+  display: inline-block;
+}
+.product-card .btn:hover {
+  background: var(--button-hover, #ffa726);
+}
+
+/* 产品详情弹窗 */
+.product-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0; top: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.27);
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.2s;
+}
+.product-modal.active {
+  display: flex;
+}
+.product-modal-content {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 40px 0 rgba(40,60,120,0.15);
+  padding: 2.5em 2em 2em 2em;
+  max-width: 420px;
+  width: 94vw;
+  position: relative;
+  text-align: center;
+  animation: popIn 0.23s;
+}
+.product-modal-content img {
+  max-width: 90%;
+  max-height: 220px;
+  margin-bottom: 1em;
+  border-radius: 12px;
+  object-fit: contain;
+}
+.product-modal-content h3 {
+  font-size: 1.25em;
+  font-weight: 700;
+  margin: 0.5em 0 0.3em 0;
+  color: #1976d2;
+}
+.product-modal-content p {
+  font-size: 1.07em;
+  color: #444;
+  margin: 0.7em 0 1.2em 0;
+}
+.product-modal-close {
+  position: absolute;
+  top: 1em;
+  right: 1.1em;
+  font-size: 1.7em;
+  color: #aaa;
+  cursor: pointer;
+  background: none;
+  border: none;
+  transition: color 0.18s;
+}
+.product-modal-close:hover {
+  color: #1976d2;
+}
+@keyframes fadeIn {
+  from { opacity: 0; } to { opacity: 1; }
+}
+@keyframes popIn {
+  from { transform: scale(0.92); opacity: 0.7; } to { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 700px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 1.3em;
+  }
+  .product-modal-content { padding: 1.1em 0.5em 1em 0.5em; }
+}

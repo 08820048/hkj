@@ -6,6 +6,8 @@
     <title>产品展示 - 苏州华可杰包装有限公司</title>
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/products.css">
+    <link rel="stylesheet" href="css/products-center.css">
 </head>
 <body>
     <header>
@@ -38,12 +40,16 @@
     </header>
     
     <main>
-        <section class="products-page">
-            <div class="container">
-                <h1>产品展示</h1>
-                <!-- 产品内容将由JavaScript动态生成 -->
-            </div>
+      <div class="products-center-container">
+        <aside class="products-sidebar">
+          <div class="products-sidebar-title">产品中心</div>
+          <ul class="products-sidebar-list" id="products-sidebar-list"></ul>
+        </aside>
+        <section class="products-main">
+          <div class="products-breadcrumb" id="products-breadcrumb"></div>
+          <div id="products-main-content"></div>
         </section>
+      </div>
     </main>
     
     <footer>
