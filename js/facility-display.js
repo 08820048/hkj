@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // 获取设备展示容器
-    const facilityContainer = document.querySelector('.facility-page .container');
+    const facilityContainer = document.querySelector('#facility-content');
     if (!facilityContainer) return;
     
     // 清空容器内容
@@ -180,6 +180,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const image = document.createElement('img');
         image.src = facility.image;
         image.alt = facility.name[currentLang];
+        
+        // 添加图片加载完成事件
+        image.onload = function() {
+            image.style.opacity = '1';
+        };
+        image.style.opacity = '0';
+        image.style.transition = 'opacity 0.3s';
+        
         facilityImage.appendChild(image);
         facilityCard.appendChild(facilityImage);
         
@@ -252,4 +260,23 @@ document.addEventListener('DOMContentLoaded', function() {
             showFacilityDetail(facilityId);
         });
     });
+
+    // 在所有内容准备好后，隐藏骨架屏并显示实际内容
+    const skeletonContent = document.getElementById('skeleton-content');
+    if (skeletonContent) {
+        // 使用requestAnimationFrame确保在下一帧渲染
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                skeletonContent.style.display = 'none';
+                facilityContainer.style.display = 'block';
+                
+                // 添加淡入效果
+                facilityContainer.style.opacity = '0';
+                facilityContainer.style.transition = 'opacity 0.3s';
+                requestAnimationFrame(() => {
+                    facilityContainer.style.opacity = '1';
+                });
+            });
+        });
+    }
 }); 

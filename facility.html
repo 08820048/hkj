@@ -6,6 +6,28 @@
     <title>硬件设施 - 苏州华可杰包装有限公司</title>
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 添加骨架屏样式 */
+        .skeleton {
+            background: #f0f0f0;
+            animation: pulse 1.5s infinite;
+        }
+        .skeleton-text {
+            height: 20px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .skeleton-image {
+            height: 200px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+    </style>
     <script>
         // 在页面渲染前检查语言设置
         (function() {
@@ -17,7 +39,7 @@
         })();
     </script>
 </head>
-<body style="visibility: hidden">
+<body>
     <header>
         <div class="container header-flex">
             <div class="logo">
@@ -50,7 +72,27 @@
     <main>
         <section class="facility-page">
             <div class="container">
-                <!-- 设备内容将由JavaScript动态生成 -->
+                <!-- 添加骨架屏 -->
+                <div id="skeleton-content">
+                    <div class="skeleton skeleton-text" style="width: 30%;"></div>
+                    <div class="skeleton skeleton-text" style="width: 60%;"></div>
+                    <div class="facility-grid">
+                        <div class="facility-card">
+                            <div class="skeleton skeleton-image"></div>
+                            <div class="skeleton skeleton-text" style="width: 80%;"></div>
+                            <div class="skeleton skeleton-text" style="width: 60%;"></div>
+                        </div>
+                        <div class="facility-card">
+                            <div class="skeleton skeleton-image"></div>
+                            <div class="skeleton skeleton-text" style="width: 80%;"></div>
+                            <div class="skeleton skeleton-text" style="width: 60%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 实际内容容器 -->
+                <div id="facility-content" style="display: none;">
+                    <!-- 设备内容将由JavaScript动态生成 -->
+                </div>
             </div>
         </section>
     </main>
@@ -61,13 +103,7 @@
             地址：江苏省苏州市高新区xx路xx号 &nbsp;|&nbsp; 电话：0512-xxxxxxx &nbsp;|&nbsp; 邮箱：info@huakejie.com</p>
         </div>
     </footer>
-    
-    <script>
-        // 在所有资源加载完成后显示页面
-        window.addEventListener('load', function() {
-            document.body.style.visibility = 'visible';
-        });
-    </script>
+
     <script src="js/i18n.js"></script>
     <script src="js/facility-data.js"></script>
     <script src="js/facility-display.js"></script>
