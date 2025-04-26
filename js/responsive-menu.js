@@ -56,3 +56,30 @@
         updateMenuDisplay();
     });
 })();
+
+// 回到顶部按钮功能
+(function() {
+  // 创建按钮并插入body
+  const btn = document.createElement('button');
+  btn.id = 'back-to-top';
+  btn.title = '回到顶部';
+  btn.innerHTML = '↑';
+  document.body.appendChild(btn);
+
+  // 显示/隐藏逻辑
+  function toggleBtn() {
+    if (window.scrollY > window.innerHeight) {
+      btn.style.display = 'block';
+    } else {
+      btn.style.display = 'none';
+    }
+  }
+  window.addEventListener('scroll', toggleBtn);
+  window.addEventListener('resize', toggleBtn);
+  document.addEventListener('DOMContentLoaded', toggleBtn);
+
+  // 点击回到顶部
+  btn.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();

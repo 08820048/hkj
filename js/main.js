@@ -241,3 +241,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// ===== 回到顶部功能 =====
+document.addEventListener('DOMContentLoaded', function() {
+    var backToTopBtn = document.getElementById('back-to-top');
+    if (!backToTopBtn) return;
+    // 显示/隐藏按钮
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            backToTopBtn.style.display = 'block';
+        } else {
+            backToTopBtn.style.display = 'none';
+        }
+    });
+    // 平滑滚动到顶部
+    backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+});
