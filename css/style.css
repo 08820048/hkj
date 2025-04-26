@@ -481,31 +481,34 @@ nav a:hover {
 
 .product-item {
     background: #fff;
-    border-radius: 8px;
+    border-radius: 0;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+    transition: transform 0.22s cubic-bezier(.4,0,.2,1), box-shadow 0.22s cubic-bezier(.4,0,.2,1), border-color 0.38s cubic-bezier(.4,0,.2,1);
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 15px;
     position: relative;
     cursor: pointer;
-    will-change: transform;
+    will-change: transform, box-shadow, border-color;
     backface-visibility: hidden;
     transform: translateZ(0);
+    border: 1.5px solid #e5eaf1;
 }
 
 .product-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transform: translateY(-8px) scale(1.04);
+    box-shadow: 0 8px 32px 0 rgba(25,118,210,0.14);
+    border-color: #1976d2;
+    z-index: 2;
 }
 
 .product-item img {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: 0;
     margin-bottom: 10px;
     transition: transform 0.2s ease-out;
     will-change: transform;
@@ -882,7 +885,7 @@ footer a, footer span, footer p {
     min-width: 150px;
     max-width: 220px;
     background: #fff;
-    border-radius: 8px;
+    border-radius: 0;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     border: 2px solid #e3ebf7;
     display: flex;
@@ -1001,7 +1004,7 @@ footer a, footer span, footer p {
 
 .company-intro-flex {
     display: flex;
-    align-items: flex-start;
+    align-items: flex-end;
     gap: 44px;
     max-width: 900px;
     margin: 0 auto;
@@ -1274,7 +1277,7 @@ footer a, footer span, footer p {
 
 .product-item {
     background: #fff;
-    border-radius: 8px;
+    border-radius: 0;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
@@ -1298,7 +1301,7 @@ footer a, footer span, footer p {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: 0;
     margin-bottom: 10px;
     transition: transform 0.2s ease-out;
     will-change: transform;
@@ -1426,7 +1429,7 @@ footer a, footer span, footer p {
     max-width: 100%;
     max-height: 90vh;
     object-fit: contain;
-    border-radius: 8px;
+    border-radius: 0;
     box-shadow: 0 4px 20px rgba(0,0,0,0.2);
 }
 
@@ -1492,7 +1495,7 @@ section:last-of-type {
 
 .product-card {
     background: #fff;
-    border-radius: 8px;
+    border-radius: 0;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
@@ -1511,7 +1514,7 @@ section:last-of-type {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: 0;
     margin-bottom: 15px;
 }
 
@@ -1636,7 +1639,7 @@ section:last-of-type {
 
 .partner-card {
     background: #fff;
-    border-radius: 8px;
+    border-radius: 0;
     padding: 20px;
     text-align: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -1724,7 +1727,7 @@ section:last-of-type {
 
 .facility-card {
     background: #fff;
-    border-radius: 12px;
+    border-radius: 0;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -1879,7 +1882,7 @@ section:last-of-type {
     max-height: 90vh;
     margin: auto;
     background: #fff;
-    border-radius: 12px;
+    border-radius: 0;
     overflow: hidden;
     transform: scale(0.9);
     transition: transform 0.3s ease;
@@ -1978,7 +1981,7 @@ section:last-of-type {
     height: 400px;
     overflow: hidden;
     margin-bottom: 30px;
-    border-radius: 8px;
+    border-radius: 0;
 }
 
 .facility-modal-image img {
@@ -2039,7 +2042,7 @@ section:last-of-type {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    border-radius: 4px;
+    border-radius: 0;
     cursor: default;
 }
 
@@ -2115,7 +2118,7 @@ section:last-of-type {
 .contact-info-card {
     background: #fff;
     padding: 30px;
-    border-radius: 10px;
+    border-radius: 0;
     box-shadow: 0 2px 15px rgba(0,0,0,0.1);
 }
 
@@ -2157,7 +2160,7 @@ section:last-of-type {
 .contact-form-card {
     background: #fff;
     padding: 30px;
-    border-radius: 10px;
+    border-radius: 0;
     box-shadow: 0 2px 15px rgba(0,0,0,0.1);
 }
 
@@ -2218,7 +2221,7 @@ section:last-of-type {
 }
 
 .map-container {
-    border-radius: 10px;
+    border-radius: 0;
     overflow: hidden;
     box-shadow: 0 2px 15px rgba(0,0,0,0.1);
 }
@@ -2226,7 +2229,7 @@ section:last-of-type {
 .faq-section {
     background: #fff;
     padding: 30px;
-    border-radius: 10px;
+    border-radius: 0;
     box-shadow: 0 2px 15px rgba(0,0,0,0.1);
 }
 
@@ -2245,7 +2248,7 @@ section:last-of-type {
 .faq-item {
     background: #f8f9fa;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 0;
     transition: transform 0.3s;
 }
 
@@ -2292,6 +2295,7 @@ section:last-of-type {
         padding: 20px;
     }
 }
+
 @media (max-width: 600px) {
     .about-features {
         flex-direction: column;
@@ -2316,5 +2320,206 @@ section:last-of-type {
     }
     .about-feature-title {
         font-size: 1em !important;
+    }
+}
+
+/* --- 首页 about 扁平化卡片风格 --- */
+.about-features-flat {
+    width: 100vw;
+    max-width: 100vw;
+    margin: 0;
+    padding: 0 0 3em 0;
+    background: #fff;
+    box-sizing: border-box;
+}
+.about-features-flat-row {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 40px;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto 2.2em auto;
+    padding: 0 32px;
+    box-sizing: border-box;
+}
+.about-feature-flat-item {
+    flex: 0 0 270px;
+    max-width: 270px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3.2em 0 2.7em 0;
+    background: #f5f7fa;
+    border-radius: 0;
+    box-shadow: 0 2px 18px 0 rgba(25,118,210,0.06);
+    border: 1.5px solid #e5eaf1;
+    transition: background 0.22s, box-shadow 0.22s, border-color 0.22s, transform 0.22s;
+    position: relative;
+}
+.about-feature-flat-icon {
+    font-size: 3.2em;
+    color: #1976d2;
+    margin-bottom: 0.8em;
+    background: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    border: none;
+    transition: color 0.22s;
+}
+.about-feature-flat-item:hover .about-feature-flat-icon {
+    color: #145ea8;
+}
+.about-feature-flat-title {
+    font-size: 1.32em;
+    color: #222;
+    font-weight: 700;
+    margin-top: 0.38em;
+    letter-spacing: 0.09em;
+    text-align: center;
+    transition: color 0.22s;
+}
+.about-feature-flat-item:hover .about-feature-flat-title {
+    color: #1976d2;
+}
+.about-feature-flat-item:hover {
+    background: #e3f2fd;
+    box-shadow: 0 8px 32px 0 rgba(25,118,210,0.14);
+    border-color: #1976d2;
+    transform: translateY(-8px) scale(1.04);
+    z-index: 2;
+}
+.about-flat-desc {
+    font-size: 1.13em;
+    color: #444;
+    text-align: center;
+    line-height: 1.8;
+    letter-spacing: 0.1em;
+    background: none;
+    margin: 2.2em auto 0 auto;
+    padding: 0 32px;
+    max-width: 1200px;
+    box-sizing: border-box;
+}
+@media (max-width: 1200px) {
+    .about-features-flat-row {
+        padding: 0 6vw;
+    }
+    .about-flat-desc {
+        padding: 0 3vw;
+    }
+}
+@media (max-width: 900px) {
+    .about-features-flat-row {
+        flex-direction: column;
+        width: 98vw;
+        max-width: 98vw;
+        gap: 16px;
+        padding: 0 4vw;
+    }
+    .about-feature-flat-item {
+        border: 1.5px solid #e5eaf1;
+        padding: 2em 0 1.6em 0;
+    }
+    .about-flat-desc {
+        padding: 0 4vw;
+    }
+}
+
+/* --- 公司简介大气扁平化风格 --- */
+.company-intro-flat {
+    background: #f5f7fa;
+    padding: 70px 0 70px 0;
+}
+.company-intro-flex-flat {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 80px;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 48px;
+    box-sizing: border-box;
+}
+.company-intro-desc-flat {
+    flex: 1 1 0;
+    min-width: 340px;
+    max-width: 720px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.company-intro-desc-flat h2 {
+    font-size: 2.1em;
+    color: #1976d2;
+    font-weight: 800;
+    margin-bottom: 1.1em;
+    letter-spacing: 1.2px;
+    text-align: left;
+}
+.company-intro-desc-flat p {
+    font-size: 1.18em;
+    color: #222;
+    line-height: 2.2;
+    letter-spacing: 0.04em;
+    margin: 0;
+    text-align: left;
+}
+.company-intro-logo-flat {
+    flex: 0 0 360px;
+    max-width: 360px;
+    min-width: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    background: #fff;
+    border-radius: 0;
+    box-shadow: 0 2px 18px 0 rgba(25,118,210,0.06);
+    border: 1.5px solid #e5eaf1;
+    padding: 0;
+}
+.company-intro-logo-flat img {
+    width: 92%;
+    max-width: 320px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+@media (max-width: 1100px) {
+    .company-intro-flex-flat {
+        gap: 36px;
+        padding: 0 3vw;
+    }
+    .company-intro-logo-flat {
+        max-width: 240px;
+        height: 160px;
+    }
+    .company-intro-logo-flat img {
+        max-width: 180px;
+    }
+}
+@media (max-width: 700px) {
+    .company-intro-flex-flat {
+        flex-direction: column;
+        gap: 28px;
+        padding: 0 2vw;
+    }
+    .company-intro-desc-flat {
+        max-width: none;
+        min-width: 0;
+        align-items: flex-start;
+    }
+    .company-intro-logo-flat {
+        width: 100%;
+        max-width: 100vw;
+        height: 100px;
+    }
+    .company-intro-logo-flat img {
+        max-width: 90vw;
     }
 }
