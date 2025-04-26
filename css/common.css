@@ -308,28 +308,24 @@ footer a, footer span, footer p {
         height: auto;
         padding-left: 0.5em;
         padding-right: 0.5em;
-    }
-    .menu-area {
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 0.5em;
-    }
-    nav ul {
-        flex-direction: column;
-        gap: 1em;
+        position: relative;
     }
     .lang-switch {
-        margin-top: 0.5em;
+        position: absolute;
+        left: 10px;
+        top: 0.5em;
+        margin-top: 0;
         margin-left: 0;
-        width: 100%;
-        justify-content: flex-end;
+        width: 120px;
+        justify-content: flex-start;
         height: auto;
+        z-index: 10;
     }
     .lang-btn {
         width: 100%;
-        min-width: 120px;
-        height: 42px;
-        line-height: 42px;
+        min-width: 100px;
+        height: 38px;
+        line-height: 38px;
         font-size: 1em;
     }
 }
@@ -361,14 +357,14 @@ footer a, footer span, footer p {
         align-items: center;
         justify-content: center;
         position: absolute;
+        right: 30px;
+        left: auto;
         top: 12px;
-        right: 16px;
-        width: 42px;
-        height: 42px;
-        background: rgba(25, 118, 210, 0.92);
+        width: 38px;
+        height: 38px;
+        background: rgba(25, 118, 210, 0.98);
         border: none;
-        border-radius: 50%;
-        box-shadow: 0 2px 8px rgba(25,118,210,0.10);
+        border-radius: 7px;
         cursor: pointer;
         z-index: 2100;
         transition: background 0.2s;
@@ -423,8 +419,7 @@ footer a, footer span, footer p {
         margin-top: 0.5em;
         margin-left: 0;
         width: 100%;
-        justify-content: flex-end;
-        height: auto;
+        z-index: 10;
     }
     .lang-btn {
         width: 100%;
