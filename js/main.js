@@ -61,6 +61,51 @@
     }
 })();
 
+// 移动端菜单展开/收起逻辑
+(function() {
+    const nav = document.querySelector('.header-flex nav');
+    const ul = nav ? nav.querySelector('ul') : null;
+    if (!nav || !ul) return;
+    // 若未插入菜单按钮，则插入
+    let btn = nav.querySelector('.menu-toggle');
+    if (!btn) {
+        btn = document.createElement('button');
+        btn.className = 'menu-toggle';
+        btn.setAttribute('aria-label', '展开菜单');
+        btn.innerHTML = '<span class="bar"></span><span class="bar"></span><span class="bar"></span>';
+        nav.parentNode.appendChild(btn); // menu-area最右侧
+    }
+    function closeMenu() {
+        ul.classList.remove('menu-open');
+        btn.classList.remove('active');
+    }
+    function openMenu() {
+        ul.classList.add('menu-open');
+        btn.classList.add('active');
+    }
+    btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (ul.classList.contains('menu-open')) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    });
+    // 点击菜单外部收起菜单
+    document.addEventListener('click', function(e) {
+        if (window.innerWidth > 768) return;
+        if (!ul.contains(e.target) && !btn.contains(e.target)) {
+            closeMenu();
+        }
+    });
+    // 窗口尺寸变化时自动收起
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            closeMenu();
+        }
+    });
+})();
+
 // 优化滚动事件处理
 (function() {
     const footer = document.querySelector('footer');
