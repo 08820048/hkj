@@ -333,11 +333,14 @@ footer a, footer span, footer p {
 @media (max-width: 768px) {
     .header-flex {
         flex-direction: row;
-        padding-left: 0.5em;
+        padding-left: 2.5em;
         padding-right: 0.5em;
         height: 60px;
         gap: 0;
         position: relative;
+    }
+    .logo-text {
+        margin-left: 1.5em;
     }
     .menu-area {
         flex-direction: row;
