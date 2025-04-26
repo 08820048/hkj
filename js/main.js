@@ -1,3 +1,19 @@
+// Header logo 跳转首页逻辑
+(function() {
+    // 获取 logo 标题元素
+    var logoTitle = document.querySelector('.logo-cn');
+    if (logoTitle) {
+        logoTitle.style.cursor = 'pointer'; // 鼠标变为手型，增强可点击感
+        logoTitle.addEventListener('click', function() {
+            // 判断是否为首页，若不是则跳转
+            var isHome = location.pathname.endsWith('index.html') || location.pathname === '/' || location.pathname === '';
+            if (!isHome) {
+                window.location.href = 'index.html';
+            }
+        });
+    }
+})();
+
 // 全站JS脚本
 // 目前预留，可后续添加交互效果
 
