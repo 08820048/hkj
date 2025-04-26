@@ -450,3 +450,38 @@ footer a, footer span, footer p {
         transform: none !important;
     }
 }
+
+@media (max-width: 600px) {
+    .logo-text {
+        margin-left: 0;
+        margin-right: 0;
+        white-space: normal;
+        word-break: break-all;
+        max-width: 90vw;
+        overflow: visible;
+        text-align: left;
+    }
+    .logo-cn {
+        font-size: 1.1em;
+        font-weight: 700;
+        line-height: 1.18;
+        word-break: break-all;
+    }
+    .logo-en {
+        font-size: 0.95em;
+        word-break: break-all;
+    }
+    .lang-switch {
+        left: 0.5em;
+        top: 0.5em;
+        width: auto;
+        min-width: 70px;
+        max-width: 30vw;
+    }
+    .lang-btn {
+        min-width: 70px;
+        width: auto;
+        padding: 0 10px;
+        font-size: 1em;
+    }
+}
