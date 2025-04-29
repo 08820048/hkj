@@ -7,7 +7,7 @@
     --accent-yellow: #ffe066;
     --accent-orange: #ff9800;
     --header-bg: #fff;
-    --footer-bg: var(--primary-blue);
+    --footer-bg: #163061;
     --header-text: #222;
     --footer-text: #fff;
     --menu-hover: #e3f2fd;
@@ -108,7 +108,7 @@ header {
 }
 
 .logo-en {
-    font-size: 1em;
+    font-size: 0.88em;
     font-weight: 500;
     color: #666;
     letter-spacing: 1.2px;
