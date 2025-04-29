@@ -28,16 +28,6 @@
             100% { opacity: 0.6; }
         }
     </style>
-    <script>
-        // 在页面渲染前检查语言设置
-        (function() {
-            const savedLang = localStorage.getItem('language');
-            if (savedLang === 'en') {
-                document.documentElement.lang = 'en';
-                document.title = 'Facility - Suzhou Huakejie Packaging Co., Ltd.';
-            }
-        })();
-    </script>
 </head>
 <body>
     <header>
@@ -62,9 +52,6 @@
                         <li><a href="contact.html">联系我们</a></li>
                     </ul>
                 </nav>
-                <div class="lang-switch">
-                    <button id="lang-toggle" class="lang-btn" title="切换语言">中文 / EN</button>
-                </div>
             </div>
         </div>
     </header>
@@ -104,7 +91,6 @@
         </div>
     </footer>
 
-    <script src="js/i18n.js"></script>
     <script src="js/facility-data.js"></script>
     <script src="js/facility-display.js"></script>
     <script src="js/facility.js"></script>
