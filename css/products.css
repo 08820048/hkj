@@ -1,5 +1,12 @@
 /* 产品展示页面专用样式，美观、响应式、可维护 */
 
+/* 主容器添加上边距 */
+main {
+    padding-top: 80px; /* 根据header高度调整 */
+    background-color: #f5f5f5;
+    min-height: calc(100vh - 80px); /* 确保最小高度填满屏幕 */
+}
+
 .products-nav {
   position: sticky;
   top: 65px;
@@ -59,43 +66,53 @@
 }
 .product-card {
   background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 2px 18px 0 rgba(40,60,120,0.07);
-  padding: 1.2em 1em 1.5em 1em;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  transition: box-shadow 0.18s, transform 0.18s;
-  cursor: pointer;
-  position: relative;
-  min-height: 360px;
+  height: 100%;
+  min-height: 380px;
 }
 .product-card:hover {
-  box-shadow: 0 8px 32px 0 rgba(40,60,120,0.15);
-  transform: translateY(-6px) scale(1.025);
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
-.product-card img {
-  max-width: 90%;
-  max-height: 170px;
-  border-radius: 10px;
-  margin-bottom: 1em;
-  object-fit: contain;
-  background: #f5f7fa;
-  box-shadow: 0 1px 6px rgba(60,80,140,0.06);
+.product-card-image {
+  width: 100%;
+  height: 220px;
+  position: relative;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+.product-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.product-card:hover .product-card-image img {
+  transform: scale(1.05);
+}
+.product-card-content {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 .product-card h3 {
-  font-size: 1.18em;
+  font-size: 18px;
+  margin: 0 0 10px 0;
+  color: #333;
   font-weight: 600;
-  color: #1976d2;
-  margin: 0.5em 0 0.3em 0;
-  text-align: center;
 }
 .product-card p {
-  font-size: 0.98em;
-  color: #444;
-  margin: 0 0 0.7em 0;
-  text-align: center;
-  flex: 1 1 auto;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+  flex: 1;
 }
 .product-card .btn {
   background: var(--button-bg, #ff9800);
@@ -185,4 +202,237 @@
     gap: 1.3em;
   }
   .product-modal-content { padding: 1.1em 0.5em 1em 0.5em; }
+}
+
+/* 产品展示页面样式 */
+.products-center-container {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    gap: 30px;
+    position: relative; /* 添加相对定位 */
+}
+
+/* 侧边栏样式 */
+.products-sidebar {
+    width: 280px;
+    flex-shrink: 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    position: sticky; /* 使侧边栏固定 */
+    top: 100px; /* 距离顶部的距离，需要大于header高度 */
+    height: fit-content; /* 高度适应内容 */
+    max-height: calc(100vh - 120px); /* 最大高度，留出空间 */
+    overflow-y: auto; /* 内容过多时可滚动 */
+}
+
+.products-sidebar-title {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.products-sidebar-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.products-sidebar-list li {
+    margin-bottom: 8px;
+}
+
+.products-sidebar-list a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.products-sidebar-list a:hover {
+    background-color: #f0f0f0;
+}
+
+.products-sidebar-list a.active {
+    background-color: #e6f7ff;
+    color: #1890ff;
+    font-weight: 500;
+}
+
+/* 子分类列表样式 */
+.sub-category-list {
+    list-style: none;
+    padding-left: 20px;
+    margin: 5px 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+}
+
+.sub-category-list.expanded {
+    max-height: 500px; /* 足够大的高度以容纳内容 */
+    opacity: 1;
+    margin: 10px 0;
+}
+
+.sub-category-list li {
+    margin: 5px 0;
+}
+
+.sub-category-list a {
+    font-size: 14px;
+    padding: 8px 15px;
+    color: #666;
+}
+
+.sub-category-list a:hover {
+    color: #1976d2;
+}
+
+/* 展开/折叠图标 */
+.expand-icon {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+    color: #999;
+    margin-left: 8px;
+    display: inline-block;
+}
+
+.expand-icon.expanded {
+    transform: rotate(180deg);
+}
+
+/* 主内容区域样式 */
+.products-main {
+    flex: 1;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    min-height: 500px; /* 确保有最小高度 */
+}
+
+/* 面包屑导航样式 */
+.breadcrumb {
+    margin-bottom: 24px;
+    padding: 12px 0;
+    font-size: 14px;
+    color: #666;
+    border-bottom: 1px solid #eee;
+}
+
+.breadcrumb a {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb a:hover {
+    color: #1890ff;
+}
+
+/* 子分类容器样式 */
+.sub-categories-container {
+    margin-bottom: 30px;
+}
+
+.sub-categories-container h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.sub-categories-container p {
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+/* 子分类网格样式 */
+.sub-categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 24px;
+    margin-top: 24px;
+}
+
+.sub-category-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sub-category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.sub-category-card h3 {
+    margin: 0 0 12px 0;
+    color: #333;
+}
+
+.sub-category-card p {
+    margin: 0 0 16px 0;
+    color: #666;
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+.sub-category-card button {
+    background: #1890ff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sub-category-card button:hover {
+    background: #40a9ff;
+}
+
+/* 响应式布局调整 */
+@media (max-width: 768px) {
+    main {
+        padding-top: 60px; /* 移动端可以稍微减小上边距 */
+    }
+
+    .products-center-container {
+        flex-direction: column;
+        padding: 15px;
+    }
+    
+    .products-sidebar {
+        width: 100%;
+        margin-bottom: 20px;
+        position: relative; /* 移动端取消固定定位 */
+        top: 0;
+        max-height: none;
+    }
+    
+    .products-main {
+        padding: 20px;
+    }
+    
+    .sub-categories-grid,
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 16px;
+    }
 }

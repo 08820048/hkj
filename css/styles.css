@@ -1,0 +1,51 @@
+/* 动画效果 */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.3s ease-in forwards;
+}
+
+.scale-in {
+    opacity: 0;
+    transform: scale(0.95);
+    animation: scaleIn 0.3s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* 侧边栏子列表动画 */
+.sub-list {
+    overflow: hidden;
+    height: 0;
+    transition: height 0.3s ease-out;
+}
+
+.sub-list.expanded {
+    height: auto;
+}
+
+/* 展开图标动画 */
+.expand-icon {
+    transition: transform 0.3s ease;
+}
+
+.expand-icon.expanded {
+    transform: rotate(90deg);
+} 

@@ -70,7 +70,7 @@ header {
     right: 18%;
     bottom: 7px;
     height: 3px;
-    background: var(--accent-yellow);
+    background: #162a56;
     border-radius: 2px;
     opacity: 0;
     transform: scaleX(0.4);
@@ -79,9 +79,9 @@ header {
 }
 
 .header-flex nav a:hover, .header-flex nav a.active {
-    color: var(--accent-yellow) !important;
+    color: #162a56 !important;
     background: none;
-    text-shadow: 0 1px 7px rgba(25,118,210,0.13);
+    text-shadow: 0 1px 7px rgba(22,42,86,0.13);
     outline: none;
     border-radius: 11px;
 }
