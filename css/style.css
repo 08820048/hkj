@@ -359,8 +359,22 @@ nav a:hover {
 
 .product-cards {
     display: flex;
-    gap: 2em;
+    flex-direction: column;
+    gap: 22px;
+    align-items: center;
+}
+
+.product-row {
+    display: flex;
+    flex-direction: row;
+    gap: 22px;
     justify-content: center;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.product-row:last-child {
+    margin-bottom: 0;
 }
 
 .product-item {
@@ -474,6 +488,24 @@ nav a:hover {
 @media (max-width: 600px) {
     .products-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+    .product-cards {
+        gap: 14px;
+    }
+    .product-row {
+        gap: 14px;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 600px) {
+    .product-row {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
     }
 }
 
@@ -1162,7 +1194,7 @@ footer a, footer span, footer p {
 
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     margin-bottom: 30px;
     position: relative;
@@ -1263,7 +1295,7 @@ footer a, footer span, footer p {
 
 @media (max-width: 1200px) {
     .products-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -2273,7 +2305,6 @@ section:last-of-type {
     margin-top: 0.38em;
     letter-spacing: 0.09em;
     text-align: center;
-    transition: color 0.22s;
 }
 .about-feature-flat-item:hover .about-feature-flat-title {
     color: #1976d2;
