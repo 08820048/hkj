@@ -16,7 +16,7 @@ const zh = {
     productsTitle: "公司简介",
     partnersTitle: "合作伙伴",
     videoTitle: "企业宣传片",
-    footer: "版权所有 2025 苏州华可杰包装有限公司 | 技术支持：自研<br>地址：江苏省苏州市高新区xx路xx号 &nbsp;|&nbsp; 电话：0512-xxxxxxx &nbsp;|&nbsp; 邮箱：info@huakejie.com",
+    footer: "版权所有 2025 苏州华可杰包装有限公司 | 技术支持：自研<br>地址：苏州市吴中区胥口镇东太湖路5088号C幢 &nbsp;|&nbsp; 电话：13776208899 &nbsp;|&nbsp; 邮箱：fanzhenhua@hkjsz.com",
     facilityTitle: "硬件设施",
     facilityIntro: "设备介绍",
     facilityFeatures: "设备特点",
