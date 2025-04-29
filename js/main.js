@@ -51,7 +51,7 @@
             // 如果是视频且正在播放，则不切换
             if (current === slides.length - 1 && videoSlide && !videoSlide.paused) return;
             nextSlide();
-        }, 5000);
+        }, 2500); // 原为5000，改为2500，提升轮播速度
     }
     function stopAuto() {
         clearInterval(timer);

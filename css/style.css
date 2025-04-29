@@ -161,15 +161,16 @@ header {
 }
 
 .logo {
-    min-width: 200px;
+    min-width: 180px;
     display: flex;
     align-items: center;
-    height: 60px;
+    height: 64px;
     gap: 10px;
+    padding: 0 0;
 }
 
 .logo-img {
-    height: 60px;
+    height: 52px;
     max-height: 100%;
     width: auto;
     display: block;
@@ -191,9 +192,9 @@ header {
 }
 
 .logo-cn {
-    font-size: 1.35em;
+    font-size: 1.22em;
     font-weight: 800;
-    line-height: 1.15;
+    line-height: 1.13;
     display: inline-block;
     color: var(--header-text);
     margin-bottom: 1px;
@@ -210,32 +211,15 @@ header {
     font-size: 1em;
     font-weight: 500;
     color: #b7c7e6;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.2px;
     line-height: 1.05;
 }
 
 .logo-sub {
-    font-size: 0.93em;
+    font-size: 0.92em;
     font-weight: 500;
     color: #b7c7e6;
     letter-spacing: 0.5px;
-    padding: 0 0 0 4px;
-    margin-left: 2px;
-    background: none;
-    border: none;
-    box-shadow: none;
-    white-space: nowrap;
-    vertical-align: middle;
-    display: inline-block;
-    line-height: 1.2;
-}
-
-.logo-sub-num {
-    color: #27ae60 !important;
-    font-weight: 700;
-    font-size: 1.08em;
-    letter-spacing: 0.5px;
-    margin: 0 1px;
 }
 
 .menu-area {
@@ -630,7 +614,7 @@ nav a:hover {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+    transition: transform 0.2s ease-out;
     aspect-ratio: 16/9;
     display: flex;
     align-items: center;
@@ -729,7 +713,7 @@ footer a, footer span, footer p {
 
 .banner-carousel {
     width: 100vw;
-    min-height: 900px;
+    min-height: 700px;
     background: var(--secondary-gray);
     position: relative;
     margin-top: 0;
@@ -743,7 +727,7 @@ footer a, footer span, footer p {
     position: relative;
     width: 100vw;
     max-width: 1920px;
-    height: 900px;
+    height: 700px;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -754,7 +738,7 @@ footer a, footer span, footer p {
     position: absolute;
     left: 0; top: 0;
     width: 100vw;
-    height: 900px;
+    height: 700px;
     opacity: 0;
     transition: opacity 0.5s;
     z-index: 1;
@@ -772,7 +756,7 @@ footer a, footer span, footer p {
 .carousel-slide img, .banner-video-embed {
     width: 100vw;
     max-width: 1920px;
-    height: 900px;
+    height: 700px;
     object-fit: cover;
     border-radius: 0;
     background: #000;
@@ -787,20 +771,30 @@ footer a, footer span, footer p {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
     background: rgba(25,118,210,0.18);
     color: #fff;
     border: none;
-    font-size: 2.5em;
+    font-size: 2em;
     cursor: pointer;
     z-index: 10;
-    padding: 0 18px;
+    padding: 0;
     border-radius: 50%;
-    transition: background 0.2s;
+    transition: background 0.2s, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 .carousel-arrow.left { left: 36px; }
 .carousel-arrow.right { right: 36px; }
-.carousel-arrow:hover { background: var(--primary-green); }
+.carousel-arrow:hover {
+    background: var(--primary-green);
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
 
 .carousel-indicators {
     position: absolute;
