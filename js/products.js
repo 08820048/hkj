@@ -223,10 +223,32 @@ document.addEventListener('DOMContentLoaded', function() {
         description.textContent = category.description;
         container.appendChild(description);
         
-        if (category.items && category.items.length > 0) {
-            const grid = document.createElement('div');
-            grid.className = 'products-grid';
+        const grid = document.createElement('div');
+        grid.className = 'products-grid';
+        
+        // 如果分类本身有图片，先显示分类图片
+        if (category.image) {
+            const card = document.createElement('div');
+            card.className = 'product-card';
             
+            const image = document.createElement('img');
+            image.src = category.image;
+            image.alt = category.title;
+            card.appendChild(image);
+            
+            const cardTitle = document.createElement('h3');
+            cardTitle.textContent = category.title;
+            card.appendChild(cardTitle);
+            
+            const cardDescription = document.createElement('p');
+            cardDescription.textContent = category.description;
+            card.appendChild(cardDescription);
+            
+            grid.appendChild(card);
+        }
+        
+        // 然后显示items中的产品
+        if (category.items && category.items.length > 0) {
             category.items.forEach(item => {
                 const card = document.createElement('div');
                 card.className = 'product-card';
@@ -246,10 +268,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 grid.appendChild(card);
             });
-            
-            container.appendChild(grid);
         }
         
+        container.appendChild(grid);
         productsMainContent.appendChild(container);
     }
     

@@ -8,7 +8,8 @@ const productsData = {
             "anti-static-masterbatch": {
                 title: "防静电母粒",
                 description: "防静电母粒是一种用于生产防静电塑料制品的原材料。",
-                items: []
+                image: "images/product/six/防静电母粒.png",
+                items:[],
             },
             "anti-static-bags": {
                 title: "防静电袋子",
