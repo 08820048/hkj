@@ -2135,22 +2135,6 @@ section:last-of-type {
     background: #0056b3;
 }
 
-.map-section {
-    margin-bottom: 40px;
-}
-
-.map-section h2 {
-    font-size: 1.8rem;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.map-container {
-    border-radius: 0;
-    overflow: hidden;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-}
-
 .faq-section {
     background: #fff;
     padding: 30px;
